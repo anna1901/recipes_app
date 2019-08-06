@@ -1,4 +1,4 @@
-@import "bootstrap-sprockets";
+
 @import "bootstrap";
 
 @mixin box_sizing {
@@ -7,7 +7,7 @@
   box-sizing:         border-box;
 }
 
-body {
+#main {
   padding-top: 50px;
 }
 

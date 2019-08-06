@@ -1,17 +1,13 @@
-<nav class="navbar navbar-fixed-top navbar-light bg-light" role="navigation">
-  <div class="container">
-    <div class = "navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-          <span class="navbar-toggler-icon"></span>
-      </button>
-      <%= link_to 'Recipe app', root_path, class: "navbar-brand", id: 'logo'%>
-    </div>
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to 'Home', root_path %></li>
-        <li><%= link_to 'About', root_path %></li>
-        <li><%= link_to 'Recipes', root_path %>
-      </ul>
+<nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-light">
+  <%= link_to 'Recipes app', root_path, class: "navbar-brand", id: 'logo'%>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav justify-content-end">
+      <%= link_to 'Home', root_path, class: 'nav-item nav-link' %>
+      <%= link_to 'About', about_path, class: 'nav-item nav-link' %>
+      <%= link_to 'Sign In', new_user_session_path, class: 'nav-item nav-link' %>
     </div>
   </div>
 </nav>
