@@ -1,13 +1,29 @@
-<nav class="navbar navbar-fixed-top navbar-expand-lg navbar-light bg-light">
+<nav class="navbar navbar-fixed-top navbar-expand-lg navbar-dark bg-primary">
   <%= link_to 'Recipes app', root_path, class: "navbar-brand", id: 'logo'%>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-    <div class="navbar-nav justify-content-end">
-      <%= link_to 'Home', root_path, class: 'nav-item nav-link' %>
-      <%= link_to 'About', about_path, class: 'nav-item nav-link' %>
-      <%= link_to 'Sign In', new_user_session_path, class: 'nav-item nav-link' %>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+    <div class="navbar-nav">
+      <%= link_to 'Home', root_path, class: 'nav-item nav-link active' %>
+      <%= link_to 'About', about_path, class: 'nav-item nav-link active' %>
+      <% if user_signed_in? %>
+        <%= link_to "Recipes", recipes_path, class: 'nav-item nav-link active' %>
+        <li class="nav-item dropdown">
+          <a class="nav-link active dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Account
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <%= link_to "Profile", '#', class: 'dropdown-item' %>
+            <%= link_to "Edit", edit_user_registration_path, class: 'dropdown-item' %>
+            <div class="dropdown-divider"></div>
+            <%= link_to "Sign out", destroy_user_session_path, class: 'dropdown-item', method: :delete %>
+          </div>
+        </li>
+      <% else %>
+        <%= link_to 'Sign In', new_user_session_path, class: 'nav-item nav-link active' %>
+      <% end %>
+
     </div>
   </div>
 </nav>
