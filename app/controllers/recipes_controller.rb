@@ -1,10 +1,12 @@
 class RecipesController < ApplicationController
   before_action :set_recipe, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :correct_user, only: [:edit, :update, :destroy]
 
   # GET /recipes
   # GET /recipes.json
   def index
-    @recipes = Recipe.all
+    @recipes = Recipe.paginate(page: params[:page])
   end
 
   # GET /recipes/1
@@ -14,7 +16,7 @@ class RecipesController < ApplicationController
 
   # GET /recipes/new
   def new
-    @recipe = Recipe.new
+    @recipe = current_user.recipes.build
   end
 
   # GET /recipes/1/edit
@@ -24,7 +26,7 @@ class RecipesController < ApplicationController
   # POST /recipes
   # POST /recipes.json
   def create
-    @recipe = Recipe.new(recipe_params)
+    @recipe = current_user.recipes.build(recipe_params)
 
     respond_to do |format|
       if @recipe.save
@@ -70,5 +72,10 @@ class RecipesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
       params.require(:recipe).permit(:name, :description)
+    end
+
+    def correct_user
+      @recipe = current_user.recipes.find_by(id: params[:id])
+      redirect_to recipes_path, notice: "You are not allowed to edit this pin" if @recipe.nil?
     end
 end
