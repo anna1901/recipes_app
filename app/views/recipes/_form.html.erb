@@ -21,6 +21,15 @@
     <%= form.text_area :description %>
   </div>
 
+  <div class="field">
+    <%= form.label :steps %>
+    <%= form.text_area :steps %>
+  </div>
+
+  <div class='field'>
+    <%= form.select :category, [ 'Breakfast', 'Main Dish', 'Snack', 'Dessert' ], :prompt => 'Select One' %>
+  </div>
+
   <div class="actions">
     <%= form.submit %>
   </div>

@@ -3,28 +3,21 @@ class RecipesController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :correct_user, only: [:edit, :update, :destroy]
 
-  # GET /recipes
-  # GET /recipes.json
+
   def index
-    @recipes = Recipe.paginate(page: params[:page])
+      @recipes = Recipe.paginate(page: params[:page]).order("created_at DESC")
   end
 
-  # GET /recipes/1
-  # GET /recipes/1.json
   def show
   end
 
-  # GET /recipes/new
   def new
     @recipe = current_user.recipes.build
   end
 
-  # GET /recipes/1/edit
   def edit
   end
 
-  # POST /recipes
-  # POST /recipes.json
   def create
     @recipe = current_user.recipes.build(recipe_params)
 
@@ -39,8 +32,6 @@ class RecipesController < ApplicationController
     end
   end
 
-  # PATCH/PUT /recipes/1
-  # PATCH/PUT /recipes/1.json
   def update
     respond_to do |format|
       if @recipe.update(recipe_params)
@@ -53,8 +44,6 @@ class RecipesController < ApplicationController
     end
   end
 
-  # DELETE /recipes/1
-  # DELETE /recipes/1.json
   def destroy
     @recipe.destroy
     respond_to do |format|

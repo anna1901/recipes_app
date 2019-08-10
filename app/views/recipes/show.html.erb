@@ -2,11 +2,12 @@
   <img src="#" class="card-img-top" alt="Recipe picture">
   <div class="card-body">
     <h5 class="card-title"><%= @recipe.name %></h5>
-    <p class="card-text"><%= @recipe.description %></p>
+    <p class="card-text">Category: <%= @recipe.category %></p>
+    <p class="card-text"><%= @recipe.steps %></p>
     <p class="card-text"><small class="text-muted"><%= @recipe.created_at.strftime('%F %T') %></small></p>
+    <% if current_user == @recipe.user %>
+      <%= link_to 'Edit', edit_recipe_path(@recipe), class: "card-link"%>
+    <% end %>
+    <%= link_to 'Back', recipes_path, class: "card-link" %>
   </div>
-  <% if current_user == @recipe.user %>
-    <%= link_to 'Edit', edit_recipe_path(@recipe) %>
-  <% end %>
-  <%= link_to 'Back', recipes_path %>
 </div>

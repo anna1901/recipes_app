@@ -11,8 +11,11 @@ user.password = 'valid_password'
 user.password_confirmation = 'valid_password'
 user.save!
 
+categories = ['Breakfast', 'Main Dish', 'Snack', 'Dessert']
 50.times do
   content = Faker::Food.description
   name = Faker::Food.dish
-  user.recipes.create!(name: name, description: content)
+  category = categories[rand(4)]
+  steps = Faker::Lorem.paragraph(sentence_count: 15)
+  user.recipes.create!(name: name, description: content, category: category, steps: steps)
 end

@@ -10,14 +10,30 @@
   </div>
 
 <% else %>
+
   <heading id = 'recipe_heading'>
-    <h1 style = 'display: inline-block'>All Recipes</h1>
+    <h1 style = 'display: inline-block'>Recipes</h1>
     <%= link_to 'New Recipe', new_recipe_path, class: "btn btn-secondary", id: 'recipe_btn' %>
   </heading>
+  <ul class="nav nav-tabs">
+  <li class="nav-item">
+    <%= link_to 'All', recipes_path, class: "nav-link active" %>
+  </li>
+  <li class="nav-item">
+    <%= link_to 'Breakfast', recipes_path, class: "nav-link" %>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Main Dish</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Snack</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="#">Dessert</a>
+  </li>
+</ul>
 
   <div class = 'container'>
-    <%= will_paginate @recipes, class: 'my_pagination' %>
-
     <div class="container">
       <%= render @recipes %>
     </div>
