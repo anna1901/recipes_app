@@ -1,4 +1,4 @@
-<%= form_with(model: recipe, local: true) do |form| %>
+<%= form_for(@recipe) do |form| %>
   <% if recipe.errors.any? %>
     <div id="error_explanation">
       <h5><%= pluralize(recipe.errors.count, "error") %> prohibited this recipe from being saved:</h5>
@@ -26,7 +26,7 @@
     <%= form.text_area :steps, class: 'form-control' %>
   </div>
 
-  <div class='form-group'>
+  <div class="form-group">
     <%= form.select :category, [ 'Breakfast', 'Main Dish', 'Snack', 'Dessert' ], :prompt => 'Select One', class: 'form-control' %>
   </div>
 
