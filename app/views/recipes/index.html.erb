@@ -19,7 +19,7 @@
     <li class="nav-item">
       <%= link_to 'All', recipes_path, class: "nav-link #{ 'active' if @active_btn.nil?}" %>
     </li>
-    <% ['Breakfast', 'Main Dish', 'Snack', 'Dessert'].each do |category| %>
+    <% @categories.each do |category| %>
       <li class="nav-item">
         <%= link_to category, recipes_path(category: category), class: "nav-link #{ 'active' if @active_btn == category}" %>
       </li>

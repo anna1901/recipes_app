@@ -5,6 +5,7 @@ class RecipesController < ApplicationController
 
 
   def index
+    @categories = recipe_categories
     if params.include?(:category)
       @recipes = Recipe.where(category: params[:category]).paginate(page: params[:page]).order("created_at DESC")
       @active_btn = params[:category]
@@ -18,9 +19,11 @@ class RecipesController < ApplicationController
 
   def new
     @recipe = current_user.recipes.build
+    @categories = recipe_categories
   end
 
   def edit
+    @categories = recipe_categories
   end
 
   def create
@@ -66,6 +69,10 @@ class RecipesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
       params.require(:recipe).permit(:name, :description, :category, :steps)
+    end
+
+    def recipe_categories
+      [ 'Breakfast', 'Main Dish', 'Snack', 'Dessert' ]
     end
 
     def correct_user
