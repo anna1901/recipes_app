@@ -1,11 +1,11 @@
 <div class="row recipe">
-    <div class="col col-3">
+    <div class="col-sm-3">
       <h5><%= link_to recipe.name, recipe %></h5>
     </div>
-    <div class="col-8">
+    <div class="col-sm-8">
       <p><%= recipe.description %></p>
     </div>
-    <div class="col-1">
+    <div class="col-sm-1">
           <% if current_user == recipe.user %>
             <div class="row"><%= link_to 'Edit', edit_recipe_path(recipe) %></div>
             <div class="row"><%= link_to 'Destroy', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></div>
