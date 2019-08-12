@@ -5,7 +5,12 @@ class RecipesController < ApplicationController
 
 
   def index
+    if params.include?(:category)
+      @recipes = Recipe.where(category: params[:category]).paginate(page: params[:page]).order("created_at DESC")
+      @active_btn = params[:category]
+    else
       @recipes = Recipe.paginate(page: params[:page]).order("created_at DESC")
+    end
   end
 
   def show
@@ -60,7 +65,7 @@ class RecipesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def recipe_params
-      params.require(:recipe).permit(:name, :description, :category)
+      params.require(:recipe).permit(:name, :description, :category, :steps)
     end
 
     def correct_user

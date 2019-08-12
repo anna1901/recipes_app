@@ -16,26 +16,19 @@
     <%= link_to 'New Recipe', new_recipe_path, class: "btn btn-secondary", id: 'recipe_btn' %>
   </heading>
   <ul class="nav nav-tabs">
-  <li class="nav-item">
-    <%= link_to 'All', recipes_path, class: "nav-link active" %>
-  </li>
-  <li class="nav-item">
-    <%= link_to 'Breakfast', recipes_path, class: "nav-link" %>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Main Dish</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Snack</a>
-  </li>
-  <li class="nav-item">
-    <a class="nav-link" href="#">Dessert</a>
-  </li>
+    <li class="nav-item">
+      <%= link_to 'All', recipes_path, class: "nav-link #{ 'active' if @active_btn.nil?}" %>
+    </li>
+    <% ['Breakfast', 'Main Dish', 'Snack', 'Dessert'].each do |category| %>
+      <li class="nav-item">
+        <%= link_to category, recipes_path(category: category), class: "nav-link #{ 'active' if @active_btn == category}" %>
+      </li>
+    <% end %>
 </ul>
 
   <div class = 'container'>
-    <div class="container">
-      <%= render @recipes %>
+    <div class="container" id = "recipes-list">
+      <%= render @recipes%>
     </div>
 
     <br>

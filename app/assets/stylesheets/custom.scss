@@ -13,6 +13,10 @@ $secondary:         #FF5252;
   padding-top: 50px;
 }
 
+#header-links .nav-link {
+  color: white !important;
+}
+
 .recipe {
   padding-top: 20px;
   padding-bottom: 20px;
@@ -27,6 +31,15 @@ $secondary:         #FF5252;
   display: inline-block;
   float: right;
   margin-right: 40px;
+}
+
+#recipes-list {
+  padding-top: 30px;
+}
+
+#show-recipe-steps {
+  margin-top: 30px;
+  margin-bottom: 30px;
 }
 
 /* miscellaneous */
