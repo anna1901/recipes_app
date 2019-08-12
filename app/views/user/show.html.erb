@@ -1,0 +1,26 @@
+<heading id = 'user_heading' style = >
+  <h1 style = 'display: inline-block'>My recipes</h1>
+  <%= link_to 'New Recipe', new_recipe_path, class: "btn btn-secondary", id: 'recipe_btn' %>
+</heading>
+
+<ul class="nav nav-tabs">
+  <li class="nav-item">
+    <%= link_to 'All', user_show_path, class: "nav-link #{ 'active' if @active_category_btn.nil?}" %>
+  </li>
+  <% @categories.each do |category| %>
+    <li class="nav-item">
+      <%= link_to category, user_show_path(category: category), class: "nav-link #{ 'active' if @active_category_btn == category}" %>
+    </li>
+  <% end %>
+</ul>
+
+<div class = 'container'>
+  <div class="container" id = "recipes-list">
+    <%= render @recipes%>
+  </div>
+
+  <br>
+
+  <%= will_paginate @recipes, class: 'my_pagination' %>
+
+</div>

@@ -15,13 +15,14 @@
     <h1 style = 'display: inline-block'>Recipes</h1>
     <%= link_to 'New Recipe', new_recipe_path, class: "btn btn-secondary", id: 'recipe_btn' %>
   </heading>
+
   <ul class="nav nav-tabs">
     <li class="nav-item">
-      <%= link_to 'All', recipes_path, class: "nav-link #{ 'active' if @active_btn.nil?}" %>
+      <%= link_to 'All', recipes_path, class: "nav-link #{ 'active' if @active_category_btn.nil?}" %>
     </li>
     <% @categories.each do |category| %>
       <li class="nav-item">
-        <%= link_to category, recipes_path(category: category), class: "nav-link #{ 'active' if @active_btn == category}" %>
+        <%= link_to category, recipes_path(category: category), class: "nav-link #{ 'active' if @active_category_btn == category}" %>
       </li>
     <% end %>
 </ul>
