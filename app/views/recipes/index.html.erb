@@ -5,7 +5,7 @@
     <%= link_to 'Sign up now!', new_user_registration_path, class: 'btn btn-secondary' %>
   </div>
   <h4>And here are some example recipes:</h4>
-  <div class="container">
+  <div class="container" style = "margin-top: 15px">
     <%= render @recipes.take(10) %>
   </div>
 
