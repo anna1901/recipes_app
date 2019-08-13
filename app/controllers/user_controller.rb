@@ -1,9 +1,9 @@
 class UserController < ApplicationController
   def show
     @user = current_user
-    @categories = recipe_categories
+    @categories = [ 'Breakfast', 'Main Dish', 'Snack', 'Dessert' ]
     if params.include?(:category)
-      @recipes = @user.recipes.paginate(page: params[:page]).order("created_at DESC")
+      @recipes = @user.recipes.where(category: params[:category]).paginate(page: params[:page]).order("created_at DESC")
       @active_category_btn = params[:category]
     else
       @recipes = @user.recipes.paginate(page: params[:page]).order("created_at DESC")
