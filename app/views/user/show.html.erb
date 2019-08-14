@@ -5,11 +5,11 @@
 
 <ul class="nav nav-tabs">
   <li class="nav-item">
-    <%= link_to 'All', user_show_path, class: "nav-link #{ 'active' if @active_category_btn.nil?}" %>
+    <%= link_to 'All', user_show_path, class: "nav-link #{ 'active' if params[:category].nil?}" %>
   </li>
   <% @categories.each do |category| %>
     <li class="nav-item">
-      <%= link_to category, user_show_path(category: category), class: "nav-link #{ 'active' if @active_category_btn == category}" %>
+      <%= link_to category, user_show_path(category: category), class: "nav-link #{ 'active' if params[:category] == category}" %>
     </li>
   <% end %>
 </ul>

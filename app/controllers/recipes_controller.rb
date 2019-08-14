@@ -8,7 +8,6 @@ class RecipesController < ApplicationController
     @categories = recipe_categories
     if params.include?(:category)
       @recipes = Recipe.where(category: params[:category]).paginate(page: params[:page]).order("created_at DESC")
-      @active_category_btn = params[:category]
     else
       @recipes = Recipe.paginate(page: params[:page]).order("created_at DESC")
     end
