@@ -9,7 +9,14 @@ user = User.new
 user.email = 'test@example.com'
 user.password = 'valid_password'
 user.password_confirmation = 'valid_password'
+user.admin = true
 user.save!
+
+other_user = User.new
+other_user.email = 'othertest@example.com'
+other_user.password = 'password'
+other_user.password_confirmation = 'password'
+other_user.save!
 
 categories = ['Breakfast', 'Main Dish', 'Snack', 'Dessert']
 50.times do
