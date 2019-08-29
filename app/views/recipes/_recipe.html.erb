@@ -6,7 +6,7 @@
       <p><%= recipe.description %></p>
     </div>
     <div class="col-sm-1">
-          <% if current_user == recipe.user %>
+          <% if current_user == recipe.user or current_user.try(:admin?) %>
             <div class="row"><%= link_to 'Edit', edit_recipe_path(recipe) %></div>
             <div class="row"><%= link_to 'Delete', recipe, method: :delete, data: { confirm: 'Are you sure?' } %></div>
           <% end %>
