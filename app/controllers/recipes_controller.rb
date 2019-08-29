@@ -76,6 +76,6 @@ class RecipesController < ApplicationController
 
     def correct_user
       @recipe = current_user.recipes.find_by(id: params[:id])
-      redirect_to recipes_path, notice: "You are not allowed to edit this pin" if @recipe.nil?
+      redirect_to recipes_path, notice: "You are not allowed to edit this pin" if @recipe.nil? and !current_user.try(:admin?)
     end
 end
