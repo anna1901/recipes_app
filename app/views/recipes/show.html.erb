@@ -3,7 +3,7 @@
   <div class="card-body">
     <h3 class="card-title"><%= @recipe.name %></h3>
     <p class="card-subtitle mb-2 text-muted">Category: <%= @recipe.category %></p>
-    <p class="card-text" id = "show-recipe-steps"><%= @recipe.steps %></p>
+    <p class="card-text" id = "show-recipe-steps"><%= simple_format @recipe.steps %></p>
     <p class="card-text"><small class="text-muted"><%= @recipe.created_at.strftime('%F %T') %></small></p>
     <% if current_user == @recipe.user %>
       <%= link_to 'Edit', edit_recipe_path(@recipe), class: "card-link"%>
