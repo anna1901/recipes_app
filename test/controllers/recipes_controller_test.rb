@@ -1,8 +1,12 @@
 require 'test_helper'
 
 class RecipesControllerTest < ActionDispatch::IntegrationTest
+  include Devise::Test::ControllerHelpers
+
   setup do
     @recipe = recipes(:one)
+    sign_in users(:one)
+
   end
 
   test "should get index" do
